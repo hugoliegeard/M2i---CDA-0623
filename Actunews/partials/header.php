@@ -1,9 +1,18 @@
 <?php
+    # Importation des constantes
+    require_once 'config/config.php';
+
+    # Importation de la connexion à la BDD
+    require_once 'config/database.php';
+
     # Importation du Helper Categorie
     require_once './helpers/category.helper.php';
 
     # Récupération des catégories
     $categories = getCategories();
+    var_dump($categories);
+
+
 ?>
 <!doctype html>
 <html lang="fr">
