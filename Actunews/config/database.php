@@ -1,6 +1,6 @@
 <?php
 
-# Documentation PDO : https://www.php.net/manual/fr/pdo.connections.php
+# Documentation PDO : https://www.php.net/manual/fr /pdo.connections.php
 
 try {
     # Création de la connexion à notre BDD

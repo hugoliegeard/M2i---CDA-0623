@@ -1,6 +1,10 @@
 <?php
     # Inclusion du header
     require_once './partials/header.php';
+
+    # Récupération de mes articles
+    $posts = getPosts(6);
+    # var_dump($posts);
 ?>
 
 <!-- Contenu de notre page -->
@@ -17,72 +21,22 @@
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
+                <?php foreach ($posts as $post): ?>
+                    <div class="col-md-4 mt-4">
+                        <div class="card shadow-sm">
+                            <img class="img-fluid" src="<?= $post['image'] ?>" alt="<?= $post['title'] ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $post['title'] ?></h5>
+                                <small class="text-muted">
+                                    <?= $post['firstname'] . ' ' . $post['lastname']
+                                    . ' | Publié le ' . $post['created_at']  ?>
+                                </small>
+                                <p class="card-text">[ACCROCHE ARTICLE]</p>
+                                <a href="#" class="btn btn-primary">Lire la suite</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card shadow-sm">
-                        <img class="img-fluid" src="https://fakeimg.pl/600x400" alt="[TITRE ARTICLE]">
-                        <div class="card-body">
-                            <h5 class="card-title">[TITRE ARTICLE]</h5>
-                            <small class="text-muted">[AUTEUR + DATE]</small>
-                            <p class="card-text">[ACCROCHE ARTICLE]</p>
-                            <a href="#" class="btn btn-primary">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

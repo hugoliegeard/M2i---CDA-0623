@@ -5,13 +5,13 @@
     # Importation de la connexion à la BDD
     require_once 'config/database.php';
 
-    # Importation du Helper Categorie
+    # Importation des Helpers
     require_once './helpers/category.helper.php';
+    require_once './helpers/post.helper.php';
 
     # Récupération des catégories
     $categories = getCategories();
-    var_dump($categories);
-
+    # var_dump($categories);
 
 ?>
 <!doctype html>
@@ -47,8 +47,8 @@
                     </li>
                     <?php foreach ($categories as $category) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="categorie.php?slug=<?= $category ?>">
-                                <?= $category ?>
+                            <a class="nav-link" href="categorie.php?slug=<?= $category['slug'] ?>">
+                                <?= $category['name'] ?>
                             </a>
                         </li>
                     <?php } ?>

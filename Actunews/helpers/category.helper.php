@@ -16,3 +16,4 @@ function getCategories(): array
     # Je retourne le résultat
     return $query->fetchAll();
 }
+
