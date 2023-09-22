@@ -6,6 +6,7 @@
     require_once 'config/database.php';
 
     # Importation des Helpers
+    require_once './helpers/global.helper.php';
     require_once './helpers/category.helper.php';
     require_once './helpers/post.helper.php';
 

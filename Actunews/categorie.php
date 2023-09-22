@@ -7,6 +7,14 @@
      * passées dans mon URL. Ex. categorie.php?slug=politique
      */
     # var_dump($_GET);
+
+    # Récupération du categorySlug dans mon URL
+    $slug = $_GET['slug'];
+
+    # Récupération des articles via le categorySlug
+    $posts = getPostsByCategorySlug($slug);
+    # dd($posts);
+
 ?>
 
 <!-- Contenu de notre page -->
@@ -25,9 +33,26 @@
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <h3>Page d'Exemple</h3>
-                </div>
+                <?php foreach ($posts as $post): ?>
+                    <div class="col-md-4 mt-4">
+                        <div class="card shadow-sm h-100">
+                            <img class="img-fluid" src="<?= $post['image'] ?>" alt="<?= $post['title'] ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $post['title'] ?></h5>
+                                <small class="text-muted">
+                                    <?= $post['firstname'] . ' ' . $post['lastname']
+                                    . ' | Publié le ' . $post['created_at']  ?>
+                                </small>
+                                <p class="card-text">
+                                    <?= summarize($post['content'], 120) ?>
+                                </p>
+                                <a href="#" class="btn btn-primary">
+                                    Lire la suite
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
