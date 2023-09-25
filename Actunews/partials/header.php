@@ -9,6 +9,7 @@
     require_once './helpers/global.helper.php';
     require_once './helpers/category.helper.php';
     require_once './helpers/post.helper.php';
+    require_once './helpers/user.helper.php';
 
     # Récupération des catégories
     $categories = getCategories();

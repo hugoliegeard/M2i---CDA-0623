@@ -34,7 +34,7 @@
                                 <p class="card-text">
                                     <?= summarize($post['content'], 120) ?>
                                 </p>
-                                <a href="#" class="btn btn-primary">
+                                <a href="article.php?slug=<?= $post['postSlug'] ?>" class="btn btn-primary">
                                     Lire la suite
                                 </a>
                             </div>

@@ -1,26 +1,24 @@
 <!-- Pied de page -->
+
+
+
+
 <footer class="mt-4 pt-4 ">
     <div class="container border-top">
         <div class="row">
             <div class="col-12 col-md">
                 <h5>Actunews</h5>
-                <small class="d-block text-muted">&copy; 2023</small>
+                <small class="d-block text-muted">&copy; <?php echo date("Y"); ?> </small>
             </div>
             <div class="col-6 col-md">
                 <h5>Catégories</h5>
                 <ul class="list-unstyled">
+               <?php foreach ($categories as $category) { ?>
                     <li>
-                        <a href="#" class="text-muted">Politique</a>
+                        <a href="categorie.php?slug=<?= $category['slug']?>" 
+                        class="text-muted"><?=$category['name']?></a>
                     </li>
-                    <li>
-                        <a href="#" class="text-muted">Economie</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-muted">Culture</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-muted">Sport</a>
-                    </li>
+                <?php } ?>
                 </ul>
             </div>
             <div class="col-6 col-md">
@@ -35,7 +33,7 @@
     <div class="container-fluid bg-dark">
         <div class="row">
             <div class="col">
-                <p class="text-center text-white">&copy; Actunews 2023</p>
+                <p class="text-center text-white">&copy; Actunews  <?php echo date("Y"); ?> </p>
             </div>
         </div>
     </div>

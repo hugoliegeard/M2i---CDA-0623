@@ -1,19 +1,15 @@
 <?php
-    # Inclusion du header
-    require_once './partials/header.php';
+# Inclusion du header
+require_once './partials/header.php';
 
-    /*
-     * La superglobale GET me permet de récupérer les informations
-     * passées dans mon URL. Ex. categorie.php?slug=politique
-     */
-    # var_dump($_GET);
+# Récupération de mes articles
+$userId = $_GET['ID'];
+$posts = getPostsByUserId($userId);
 
-    # Récupération du categorySlug dans mon URL
-    $slug = $_GET['slug'];
-
-    # Récupération des articles via le categorySlug
-    $posts = getPostsByCategorySlug($slug);
-    # dd($posts);
+# Récupération de l'auteur
+$user = getUserById($userId);
+#dump($user);
+#dump($posts);
 
 ?>
 
@@ -23,9 +19,7 @@
 
     <!-- Titre de la page -->
     <div class="p-3 mx-auto text-center">
-        <h1 class="display-4 text-capitalize">
-            <?= $_GET['slug'] ?>
-        </h1>
+        <h1 class="display-4"><?=$user['firstname'] ?> <?=$user['lastname'] ?></h1>
     </div>
 
     <!-- Contenu de la page -->
@@ -41,7 +35,7 @@
                                 <h5 class="card-title"><?= $post['title'] ?></h5>
                                 <small class="text-muted">
                                     <?= $post['firstname'] . ' ' . $post['lastname']
-                                    . ' | Publié le ' . $post['created_at']  ?>
+                                    . ' | Publié le ' . $post['created_at'] ?>
                                 </small>
                                 <p class="card-text">
                                     <?= summarize($post['content'], 120) ?>
@@ -61,6 +55,6 @@
 <!-- Fin -- Contenu de notre page -->
 
 <?php
-# Inclusion du header
+# Inclusion du footer
 require_once './partials/footer.php';
 ?>
