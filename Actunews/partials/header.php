@@ -30,6 +30,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.22.0/full/ckeditor.js"></script>
 </head>
 <body>
 
@@ -58,7 +59,7 @@
 
                 <div class="text-right">
                     <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
-                    <a class="nav-item btn btn-outline-warning mx-2" href="#">Inscription</a>
+                    <a class="nav-item btn btn-outline-warning mx-2" href="inscription.php">Inscription</a>
                 </div> <!-- ./text-right -->
 
             </div> <!-- ./collapse -->
