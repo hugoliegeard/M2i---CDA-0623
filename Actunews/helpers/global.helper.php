@@ -50,3 +50,13 @@ function summarize(string $text, int $length = 180): string
     # Je retourne le résultat de ma fonction
     return $string . '...';
 }
+
+/**
+ * Permet la redirection vers une autre page.
+ * @param string $url
+ * @return void
+ */
+function redirect(string $url): void {
+    header("Location: $url");
+    exit();
+}
