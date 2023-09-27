@@ -36,7 +36,7 @@ $post = getPostBySlug($slug);
                     <hr class="border border-dark mb-5" >
 
                     <!-- Illustration de l'article -->
-                    <img class="img-fluid mb-5" src=<?= $post['image']?>
+                    <img class="img-fluid mb-5" src="uploads/posts/<?= $post['image']?>"
                          alt="<?= $post['title'] ?>">
 
                     <!-- Contenu de l'article' -->

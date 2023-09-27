@@ -23,6 +23,17 @@ function getUserById(int $idUser)
     return $query->fetch();
 }
 
+/**
+ * Permet l'insertion d'un utilisateur
+ * dans la base de données
+ * @param string $firstname
+ * @param string $lastname
+ * @param string $username
+ * @param string $email
+ * @param string $password
+ * @param string $roles
+ * @return false|string
+ */
 function insertUser(string $firstname,
                     string $lastname,
                     string $username,

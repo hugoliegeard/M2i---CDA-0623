@@ -1,19 +1,25 @@
 <?php
-    # Importation des constantes
-    require_once 'config/config.php';
 
-    # Importation de la connexion à la BDD
-    require_once 'config/database.php';
+# Démarrage de la session PHP
+session_start();
 
-    # Importation des Helpers
-    require_once './helpers/global.helper.php';
-    require_once './helpers/category.helper.php';
-    require_once './helpers/post.helper.php';
-    require_once './helpers/user.helper.php';
+# Importation des constantes
+require_once 'config/config.php';
 
-    # Récupération des catégories
-    $categories = getCategories();
-    # var_dump($categories);
+# Importation de la connexion à la BDD
+require_once 'config/database.php';
+
+# Importation des Helpers
+require_once './helpers/global.helper.php';
+require_once './helpers/category.helper.php';
+require_once './helpers/post.helper.php';
+require_once './helpers/user.helper.php';
+require_once './helpers/upload.helper.php';
+require_once './helpers/security.helper.php';
+
+# Récupération des catégories
+$categories = getCategories();
+# var_dump($categories);
 
 ?>
 <!doctype html>
@@ -36,34 +42,6 @@
 
 <!-- En-Tête de page -->
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.php">ActuNews - Premier sur l'info !</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto text-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Accueil</a>
-                    </li>
-                    <?php foreach ($categories as $category) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="categorie.php?slug=<?= $category['slug'] ?>">
-                                <?= $category['name'] ?>
-                            </a>
-                        </li>
-                    <?php } ?>
-                </ul>
-
-                <div class="text-right">
-                    <a class="nav-item btn btn-outline-info" href="connexion.php">Connexion</a>
-                    <a class="nav-item btn btn-outline-warning mx-2" href="inscription.php">Inscription</a>
-                </div> <!-- ./text-right -->
-
-            </div> <!-- ./collapse -->
-        </div> <!-- ./container-fluid -->
-    </nav> <!-- /nav -->
+    <?php require_once 'nav.php' ?>
 </header>
 <!-- Fin -- En-Tête de page -->

@@ -81,7 +81,6 @@ function getPostsByCategorySlug(string $categorySlug) {
 
 }
 
-
 /**
  * Permet de récupérer les articles
  *  de la BDD via le slug de l'article
@@ -159,4 +158,28 @@ function getPostsByUserId(int $postUserId){
 
     # Retour du résultat
     return $query->fetchAll();
+}
+
+function insertPost(string $title,
+                    string $slug,
+                    string $content,
+                    string $id_category,
+                    string $id_user,
+                    string $image): false|string
+{
+    global $dbh;
+    $sql = 'INSERT INTO post (title, slug, content, image, id_category, id_user, created_at, updated_at) 
+                VALUES (:title, :slug, :content, :image, :id_category, :id_user, :created_at, :updated_at)';
+
+    $query = $dbh->prepare($sql);
+    $query->bindValue('title', $title);
+    $query->bindValue('slug', $slug);
+    $query->bindValue('content', $content);
+    $query->bindValue('image', $image);
+    $query->bindValue('id_category', $id_category);
+    $query->bindValue('id_user', $id_user);
+    $query->bindValue('created_at', (new DateTime())->format('Y-m-d H:i:s') );
+    $query->bindValue('updated_at', (new DateTime())->format('Y-m-d H:i:s') );
+
+    return $query->execute() ? $dbh->lastInsertId() : false;
 }
