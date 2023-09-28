@@ -76,7 +76,7 @@ if (!empty($_POST)) {
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
-                        
+
                         <!-- Affichage des messages flash -->
                         <?php include 'partials/flash/_flash.message.php' ?>
 
@@ -117,7 +117,22 @@ if (!empty($_POST)) {
 
 </main>
 <!-- Fin -- Contenu de notre page -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(function() {
+        $.getJSON('http://ip-api.com/json/', function (data) {
+           $('#login').append(`
+                <p class="mt-4 text-center text-muted">
+                    <small>
+                        Votre adresse IP : ${data.query} - ${data.isp} en ${data.regionName}
+                    </small>
+                </p>
+           `);
+        });
+    });
+</script>
 <?php
 # Inclusion du header
 require_once './partials/footer.php';

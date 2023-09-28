@@ -33,7 +33,6 @@ if (!$post) {
 
                     <!-- Titre de l'article -->
                     <h1 class="display-4"><?= $post['title'] ?></h1>
-
                     <hr class="border border-dark" >
 
                     <!-- Information de l'article -->
