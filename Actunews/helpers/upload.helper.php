@@ -45,7 +45,11 @@ function uploadFiles(array  $file,
     
     # 4. Déterminer la destination du fichier (ou je vais stocker mon image)
     $folderDestination = UPLOAD_DIR . $destination . DIRECTORY_SEPARATOR;
-    mkdir($folderDestination);
+
+    # Si le dossier n'existe pas, il est créé.
+    if(!file_exists($folderDestination)) {
+        mkdir($folderDestination);
+    }
     
     $fileDestination = $folderDestination . $fileName;
 

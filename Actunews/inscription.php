@@ -53,9 +53,10 @@ if (!empty($_POST)) {
     if (empty($errors)) {
         $idUser = insertUser(...$_POST);
         if ($idUser) {
+            # Alerte de confirmation
+            addFlash('success', 'Félicitation votre inscription est effective. Vous pouvez vous connecter.');
             # Redirection vers la page connexion. Avec un message de confirmation.
-            # TODO Idéalement, les messages sont passés via les sessions PHP. Message Flash.
-            redirect("connexion.php?info=Félicitation votre inscription est effective. Vous pouvez vous connecter.");
+            redirect("connexion.php");
         }
     }
 
@@ -89,6 +90,9 @@ if (!empty($_POST)) {
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
+
+                        <!-- Affichage des messages flash -->
+                        <?php include 'partials/flash/_flash.message.php' ?>
 
                         <!-- Prénom -->
                         <div class="mb-3">

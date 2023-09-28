@@ -76,6 +76,9 @@ if (!empty($_POST)) {
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
+                        
+                        <!-- Affichage des messages flash -->
+                        <?php include 'partials/flash/_flash.message.php' ?>
 
                         <!-- Email -->
                         <div class="mb-3">

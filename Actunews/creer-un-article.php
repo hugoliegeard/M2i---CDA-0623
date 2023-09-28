@@ -3,8 +3,10 @@
 require_once './partials/header.php';
 
 # Vérification des droits d'accès
-if ( !isAuthenticated() || (isAuthenticated() && !isGranted('ROLE_REPORTER')) ) {
-    redirect("connexion.php?danger=Vous n'avez pas les droits suffisants pour cette opération.");
+$user = isAuthenticated();
+if ( !$user || ($user && !isGranted('ROLE_REPORTER')) ) {
+    addFlash('danger', "Vous n'avez pas les droits suffisants pour cette opération.");
+    redirect("connexion.php");
 }
 
 # 1. Récupération des informations
@@ -19,7 +21,7 @@ if (!empty($_POST)) {
     $slug = $_POST['slug'];
     $content = $_POST['content'];
     $id_category = $_POST['id_category'] ?? 0;
-    $id_user = 1; # TODO : A remplacer plus tard par l'utilisateur connecté
+    $id_user = $user['id_user'];
     $image = $_FILES['image'];
 
     # 4. Vérification des informations
@@ -57,11 +59,12 @@ if (!empty($_POST)) {
         $errors['id_category'] = "N'oubliez pas la catégorie de votre article";
     }
 
-    #5. TODO Upload de l'image
+    # Vérification de l'image
     if (empty($image['size'])) {
         $errors['image'] = "N'oubliez pas l'image de votre article";
     }
 
+    #5. Upload de l'image
     $image = uploadFiles($image, $title, '/posts');
 
     #6. TODO Notification Flash
@@ -70,7 +73,8 @@ if (!empty($_POST)) {
         try {
             $id_post = insertPost($title, $slug, $content, $id_category, $id_user, $image);
             if ($id_post) {
-                redirect("article.php?info=Félicitation, votre article est en ligne !&slug=$slug");
+                addFlash('success', 'Félicitation votre article est en ligne !');
+                redirect("article.php?slug=$slug");
             }
         } catch (Exception $exception) {
             dd($exception->getMessage());

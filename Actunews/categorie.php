@@ -8,6 +8,11 @@
      */
     # var_dump($_GET);
 
+    # En cas d'absence du slug
+    if(!isset($_GET['slug'])) {
+        redirect('accueil.html');
+    }
+
     # Récupération du categorySlug dans mon URL
     $slug = $_GET['slug'];
 
@@ -24,7 +29,7 @@
     <!-- Titre de la page -->
     <div class="p-3 mx-auto text-center">
         <h1 class="display-4 text-capitalize">
-            <?= $_GET['slug'] ?>
+            <?= $slug ?>
         </h1>
     </div>
 
